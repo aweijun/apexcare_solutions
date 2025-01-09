@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'gradient-teal shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center p-4">
-        <Link href="/" className="text-2xl font-extrabold text-white">ApexCare</Link>
+        <Link href="/" className="text-2xl font-extrabold text-white">ApexCare.</Link>
         
         {/* Mobile Menu Button */}
         <button 

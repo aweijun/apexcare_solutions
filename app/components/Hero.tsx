@@ -13,8 +13,8 @@ export default function Hero() {
       />
       <div className="absolute inset-0 bg-[#0097A7] dark:bg-[#006064] opacity-70"></div>
       <div className="relative z-10 text-center px-4 animate-fade-in">
-        <h1 className="text-scale-5 font-extrabold mb-4">ApexCare Medical Solutions</h1>
-        <p className="text-scale-2 mb-8 max-w-2xl mx-auto">Premium quality medical supplies & equipment at competitive prices</p>
+        <h1 className="text-scale-5 font-extrabold mb-4">ApexCare Solutions</h1>
+        <p className="text-scale-2 mb-8 max-w-2xl mx-auto">Quality solutions to allow expert patient care.</p>
         <a href="#contact" className="bg-white text-[#00BCD4] dark:bg-[#B2EBF2] dark:text-[#006064] px-8 py-3 rounded-full font-bold text-scale-1 hover:bg-[#B2EBF2] dark:hover:bg-white transition duration-300">Get in Touch</a>
       </div>
     </section>
