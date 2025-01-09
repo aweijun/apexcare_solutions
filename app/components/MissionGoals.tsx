@@ -77,6 +77,7 @@ export default function MissionGoals() {
   }
 
   return (
+    // mission
     <section id="mission" className="py-16 bg-white overflow-hidden mb-12">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-extrabold text-center mb-12 text-[#00BCD4]">Our Mission and Goals</h2>
