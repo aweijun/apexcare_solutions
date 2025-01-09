@@ -13,27 +13,34 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: "Ms Tan",
-    role: "Operations Manager",
-    responsibility: "Oversees day-to-day operations and ensures smooth workflow across all departments.",
-    bio: "Vast knowledge of optimal operational management. Seasoned project consultant for startups in Asia.",
-    image: "/ms-tan.jpg"
+    name: "Nicole Tan",
+    role: "Operations Director",
+    responsibility: "Oversees the seamless execution of daily operations and drives operational excellence across all departments.",
+    bio: "An accomplished operations strategist with extensive expertise in streamlining workflows and optimizing productivity. Previously a lead consultant for multiple successful startup projects across Asia.",
+    image: "/nicole-tan.jpg"
   },
   {
-    name: "Mr Tong",
-    role: "Business Development",
-    responsibility: "Leads strategic initiatives to expand our market presence and foster key partnerships.",
-    bio: "Experienced entrepreneur who built a successful trading company. Veteran for spearheading developmental processes for startups in Asia.",
-    image: "/mr-tong.jpg"
+    name: "Tong Ming Hao",
+    role: "Business Development Director",
+    responsibility: "Spearheads strategic initiatives to expand market presence, foster long-term partnerships, and drive business growth.",
+    bio: "A dynamic entrepreneur with a proven track record of founding and scaling successful trading businesses. Expert in business strategy and development for emerging enterprises in Asia.",
+    image: "/john-tong.jpg"
   },
   {
-    name: "Dr Chow",
-    role: "Medical Advisor",
-    responsibility: "Provides expert medical insights to guide our product development and quality assurance.",
-    bio: "Seasoned consultant oncologist and Head of Oncology and Palliative Care at St George's Hospital, London. Has built several successful healthcare companies.",
-    image: "/dr-chow.jpg"
+    name: "Dr. Jason Chow",
+    role: "Medical Director",
+    responsibility: "Provides expert medical leadership to shape our product development, ensure quality assurance, and uphold industry standards.",
+    bio: "A distinguished consultant oncologist and Head of Oncology and Palliative Care at St. George's Hospital, London. Renowned for his expertise in healthcare innovation and for founding several thriving healthcare companies.",
+    image: "/dr-jason-chow.jpg"
+  },
+  {
+    name: "Derek Li",
+    role: "Chief Financial Officer (CFO)",
+    responsibility: "Leads the company's financial strategy, oversees financial planning and analysis, and ensures fiscal health and sustainability.",
+    bio: "An experienced financial executive with a proven history of managing complex financial operations. Known for his expertise in driving profitability and ensuring regulatory compliance.",
+    image: "/derek-li.jpg"
   }
-]
+];
 
 export default function Team() {
   return (
