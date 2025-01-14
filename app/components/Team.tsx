@@ -1,7 +1,9 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 
 interface TeamMember {
   name: string;
@@ -43,17 +45,70 @@ const team: TeamMember[] = [
 ];
 
 export default function Team() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   return (
-    <section id="team" className="py-16 bg-[#B2EBF2]">
+    <section id="team" className="py-16 bg-[#B2EBF2] min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-extrabold text-center mb-12 text-[#0097A7]">Meet the Team</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 auto-rows-fr">
           {team.map((member, index) => (
-            <FlipCard key={index} member={member} />
+            isMobile ? (
+              <MobileTeamCard key={index} member={member} />
+            ) : (
+              <FlipCard key={index} member={member} />
+            )
           ))}
         </div>
       </div>
     </section>
+  )
+}
+
+function MobileTeamCard({ member }: { member: TeamMember }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="bg-white rounded-lg shadow-md text-center cursor-pointer aspect-[5/6] flex flex-col">
+          <div className="flex-grow flex items-center justify-center p-4" style={{ height: '62.5%' }}>
+            <div className="relative w-full h-full rounded-full overflow-hidden" style={{ maxWidth: '75%', aspectRatio: '1/1' }}>
+              <Image
+                src={member.image}
+                alt={member.name}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </div>
+          <div className="p-4 bg-white text-[#00BCD4]">
+            <h3 className="text-lg font-bold mb-1">{member.name}</h3>
+            <h4 className="text-sm text-[#4DD0E1] mb-2">{member.role}</h4>
+            <p className="text-xs text-gray-600 line-clamp-2">{member.responsibility}</p>
+          </div>
+        </div>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{member.name}</DialogTitle>
+          <DialogDescription>{member.role}</DialogDescription>
+        </DialogHeader>
+        <div className="mt-4">
+          <h4 className="font-semibold mb-2">Responsibility:</h4>
+          <p className="mb-4">{member.responsibility}</p>
+          <h4 className="font-semibold mb-2">Bio:</h4>
+          <p>{member.bio}</p>
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -62,22 +117,24 @@ function FlipCard({ member }: { member: TeamMember }) {
 
   return (
     <div 
-      className="bg-white p-6 rounded-lg shadow-md text-center h-[400px] perspective-1000 cursor-pointer"
+      className="bg-white rounded-lg shadow-md text-center aspect-[5/6] perspective-1000 cursor-pointer"
       onClick={() => setIsFlipped(!isFlipped)}
     >
       <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-        <div className="absolute w-full h-full backface-hidden">
-          <div className="mb-4 relative w-32 h-32 mx-auto rounded-full overflow-hidden">
-            <Image
-              src={member.image}
-              alt={member.name}
-              layout="fill"
-              objectFit="cover"
-            />
+        <div className="absolute w-full h-full backface-hidden flex flex-col justify-between p-6">
+          <div className="flex flex-col items-center justify-center flex-grow">
+            <div className="mb-4 relative w-24 h-24 rounded-full overflow-hidden">
+              <Image
+                src={member.image}
+                alt={member.name}
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-[#00BCD4]">{member.name}</h3>
+            <h4 className="text-lg text-[#4DD0E1] mb-4">{member.role}</h4>
+            <p className="text-sm line-clamp-3">{member.responsibility}</p>
           </div>
-          <h3 className="text-xl font-bold mb-2 text-[#00BCD4]">{member.name}</h3>
-          <h4 className="text-lg text-[#4DD0E1] mb-4">{member.role}</h4>
-          <p className="text-base">{member.responsibility}</p>
         </div>
         <div className="absolute w-full h-full backface-hidden rotate-y-180 flex items-center justify-center p-6">
           <p className="text-sm">{member.bio}</p>

@@ -98,3 +98,33 @@ html {
   }
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  body {
+    scroll-snap-type: none;
+  }
+
+  section {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+    height: auto;
+    min-height: 100vh;
+  }
+}
+

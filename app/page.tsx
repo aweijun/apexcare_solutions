@@ -9,16 +9,16 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <Header />
-      <section id="home">
+      <section id="home" className="h-screen">
         <Hero />
       </section>
-      <section id="mission">
+      <section id="mission" className="h-screen">
         <MissionGoals />
       </section>
-      <section id="team">
+      <section id="team" className="h-screen">
         <Team />
       </section>
-      <section id="contact">
+      <section id="contact" className="h-screen">
         <ContactForm />
       </section>
       <Footer />
